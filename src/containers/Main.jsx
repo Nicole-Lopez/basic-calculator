@@ -101,7 +101,7 @@ export default function Main() {
 			<div className="container">
 
 				<div className="author">
-					<a href="#"><i className="bi bi-github"></i> See the code on GitHub</a>
+					<a href="https://github.com/Nicole-Lopez/basic-calculator"><i className="bi bi-github"></i> See the code on GitHub</a>
 				</div>
 
 				<p id='preview'>{preview}</p>
