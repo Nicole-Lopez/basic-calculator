@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+@mixin screen($ypadding, $fontcolor, $fontweight, $fontsize, $backgroundcolor) {
+	grid-column: 1/5;
+	text-align: right;
+	background-color: $backgroundcolor;
+	height: 100%;
+	word-break:break-all;
+	color:$fontcolor; 
+	padding: $ypadding 30px;
+	font:$fontweight $fontsize 'Fira Code', monospace;
+} 
+
+body{
+	overflow-x: hidden;
+}
+
+#calculator{
+	padding: 10vh 0;
+	height: 80vh;
+
+	.container{
+		margin: 0 auto;
+		display: grid;
+		width: 25em;
+		height: 45em;
+		grid-template-columns:repeat(4, 1fr);
+		grid-template-rows: repeat(7, 1fr);
+	
+
+		button{
+			font:900 25px 'Fira Code', monospace;
+		}
+	
+		#preview{
+			border-radius: 30px 30px 0 0;
+		}
+	
+		.operator{
+			font-size: 30px;
+		}	
+	
+		#equals{
+			background-color: #27a89c;
+			grid-column: 3/5;		
+			font-size: 50px;
+			border-bottom-right-radius: 20px;
+		}
+	
+		#zero{
+			border-bottom-left-radius: 20px;
+		}
+	
+		.author{
+			cursor: pointer;
+			position: absolute;
+			top:20px;
+			right: 0;
+			font:900 1em 'Fira Code', monospace;
+			background-color: #ff4181;
+			padding: 15px 25px;		
+			border-radius: 5px 0 0 5px;
+			transform: translateX(265px);
+			transition: transform 1s ease;
+			a{
+				text-decoration: none;
+				color:#fff;
+			}
+		}
+	
+		.author:hover{
+			transform: translateX(0px);
+		}
+	}
+}
+
+.dark_theme{
+	background-color: #2d2d2d;
+
+	.container{
+		button{
+			color: #fff;
+			border: solid 1px #040d0f;	
+		}	
+	
+		#preview{
+			@include screen(20px, #2dc4b6, 700, 1.5em, #010808);
+		}
+	
+		#display{
+			@include screen(10px, #fff, 500, 3em, #010808);
+		}
+	
+		.number{
+			background-color: #08151a;
+		}
+	
+		.operator{
+			background-color: #0e4b4f;
+		}
+	
+		.other_btn{
+			background-color: #071415;
+		}
+	}
+}
+
+.light_theme{
+	background-color: #e4e5f1;
+
+	.container{
+		button{
+			color: #000;
+			border: solid 1px #eaeaea;	
+		}
+	
+		#preview{
+			@include screen(20px, #2dc4b6, 700, 1.5em, #fff);
+		}
+	
+		#display{
+			@include screen(10px, #000, 900, 3em, #fff);
+		}
+	
+		.number{
+			background-color: #fdfdfd;
+		}
+	
+		.operator{
+			background-color: #c1eeea;
+		}
+	
+		#equals{
+			color:#fff;	
+		}
+	
+		.other_btn{
+			background-color: #fdfdfd;
+		}
+	}
+}
