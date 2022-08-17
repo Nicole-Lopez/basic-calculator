@@ -139,3 +139,16 @@ body{
 		}
 	}
 }
+
+@media all and (max-width: 410px){
+	.container{
+		max-width: 90vw;
+	}
+}
+
+@media all and (max-height: 800px){
+	.container{
+		max-height: 80vh;
+		min-height: 380px;
+	}
+}

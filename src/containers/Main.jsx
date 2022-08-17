@@ -8,6 +8,8 @@ import {
 	removeOperator,
 	clear
 } from '../redux/actions/index';
+import useKeypress from 'react-use-keypress';
+
 
 export default function Main() {
   	const dispatch = useDispatch()
@@ -33,16 +35,16 @@ export default function Main() {
 			setPreview(preview+'0.')
 			setCurrentValue('0.')			
 		}else{
-			// if (result) {
-			// 	handleClearBtn()
-			// 	setNumber(e)
-			// 	setPreview(e)
-			// 	setCurrentValue(e)			
-			// }else{
+			if (result) {
+				handleClearBtn()
+				setNumber(e)
+				setPreview(e)
+				setCurrentValue(e)			
+			}else{		
 				setNumber(number+e)
 				setPreview(preview+e)
 				setCurrentValue(number+e)
-			// }
+			}
 		}			
 	}
 
@@ -96,12 +98,43 @@ export default function Main() {
 		setNumber('')
 	}
 
+
+	useKeypress(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'], (event) => {
+	    formerNumber(event.key)
+	});
+
+	useKeypress(['+', '*', '-', '/'], (event) => {
+		if (event.key === '-') {
+			if(preview.substr(-1)!=='-'&&preview.substr(-1)!=='+'&&preview.substr(-1)!=='*'&&preview.substr(-1)!=='/'){
+				handleOperator('-')
+				return
+			}else{
+				handleNegative('-')
+				return
+			}
+		}
+	    handleOperator(event.key)
+	});
+
+	useKeypress('Enter', () => {
+	    handleResult()
+	});
+
+	useKeypress('Backspace', () => {
+		if (result||!number||preview.substr(-1)==='+'||preview.substr(-1)==='*'||preview.substr(-1)==='/') return
+		handleDelBtn()			
+	});
+
+	useKeypress('Delete', () => {
+	    handleClearBtn()
+	});
+
 	return (
 		<div id='calculator' className={darkTheme?'dark_theme':'light_theme'}>
 			<div className="container">
 
 				<div className="author">
-					<a href="https://github.com/Nicole-Lopez/basic-calculator"><i className="bi bi-github"></i> See the code on GitHub</a>
+					<a href="https://github.com/Nicole-Lopez/basic-calculator" target="_blank" rel="noopener noreferrer"><i className="bi bi-github"></i> See the code on GitHub</a>
 				</div>
 
 				<p id='preview'>{preview}</p>

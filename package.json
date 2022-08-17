@@ -1,5 +1,5 @@
 {
-  "homepage": "https://nicole-lopez.github.io/basic-calculator/",  
+  "homepage": "https://nicole-lopez.github.io/basic-calculator/",
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
+    "react-use-keypress": "^1.3.1",
     "redux": "^4.2.0",
     "sass": "^1.54.4",
     "web-vitals": "^2.1.4"
